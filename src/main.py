@@ -1,5 +1,5 @@
-from src.board import Board
-from src.game import Game
+from .board import Board
+from .game import Game
 
 
 class UI:
@@ -25,7 +25,7 @@ class UI:
         if winner == "Draw":
             print("Game over! It's a draw!")
         else:
-            print(f"Player {winner} wins!")
+            print(f"{winner} wins!")
 
 
 def main():

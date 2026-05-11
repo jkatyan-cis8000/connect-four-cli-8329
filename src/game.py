@@ -8,6 +8,12 @@ class Game:
         return self.player_names[self.current_player_value]
 
     def make_move(self, col):
+        if not self.board.is_valid_column(col):
+            raise ValueError(f"Invalid column: {col}. Must be between 1 and 7")
+        
+        if self.board.get_available_row(col) is None:
+            raise ValueError(f"Column {col} is full")
+        
         if self.board.apply_move(col, self.current_player_value):
             winner = self.board.check_winner()
             if winner:

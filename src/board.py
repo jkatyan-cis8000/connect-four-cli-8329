@@ -41,21 +41,23 @@ class Board:
 
     def _check_direction(self, row, col, player, delta_row, delta_col):
         count = 1
+        # Check positive direction
         for i in range(1, 4):
             r = row + delta_row * i
             c = col + delta_col * i
             if r < 0 or r >= self.rows or c < 0 or c >= self.columns:
-                return False
+                break
             if self.grid[r][c] != player:
-                return False
+                break
             count += 1
+        # Check negative direction
         for i in range(1, 4):
             r = row - delta_row * i
             c = col - delta_col * i
             if r < 0 or r >= self.rows or c < 0 or c >= self.columns:
-                return False
+                break
             if self.grid[r][c] != player:
-                return False
+                break
             count += 1
         return count >= 4
 
